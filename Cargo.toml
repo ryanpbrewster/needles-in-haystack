@@ -4,3 +4,11 @@ version = "0.1.0"
 authors = ["Ryan P. Brewster <RyanPBrewster@gmail.com>"]
 
 [dependencies]
+
+[dev-dependencies]
+criterion = "0.2"
+
+[[bench]]
+name = "trivial"
+harness = false
+
