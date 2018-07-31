@@ -1,9 +1,8 @@
 use std::collections::BTreeMap;
 
 /// BTreeMap is ~2x faster than HashMap for this purpose
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct SuffixTreeHaystack {
-    terminal: bool,
     children: BTreeMap<u8, SuffixTreeHaystack>,
 }
 
@@ -13,11 +12,10 @@ impl ::Haystack for SuffixTreeHaystack {
     /// we can perform many matches with it.
     fn new(haystack: Vec<u8>) -> SuffixTreeHaystack {
         let mut root = SuffixTreeHaystack::default();
-        for i in 0..haystack.len() {
-            let mut leaf = (0..i).fold(&mut root, |cur, j| {
-                cur.children.entry(haystack[j]).or_default()
-            });
-            leaf.terminal = true;
+        for i in 0..=haystack.len() {
+            haystack[i..]
+                .iter()
+                .fold(&mut root, |cur, &ch| cur.children.entry(ch).or_default());
         }
         root
     }
@@ -30,7 +28,7 @@ impl ::Haystack for SuffixTreeHaystack {
                 Some(child) => cur = child,
             };
         }
-        cur.terminal
+        true
     }
 }
 

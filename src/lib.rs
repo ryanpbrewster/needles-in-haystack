@@ -4,6 +4,7 @@ pub trait Haystack {
 }
 
 pub mod rabin_karp;
+pub mod suffix_array;
 pub mod suffix_tree;
 pub mod window;
 
