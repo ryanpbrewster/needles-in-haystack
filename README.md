@@ -9,7 +9,14 @@ not_ contain the needle `"foo"`.
 
 ## Benchmark results
 
+### Brute Force
 ![Brute Force](reports/window.svg)
+
+### Rabin Karp
 ![Rabin Karp](reports/rabin-karp.svg)
+
+### Suffix Tree
 ![Suffix Tree](reports/suffix-tree.svg)
+
+### Suffix Array
 ![Suffix Array](reports/suffix-array.svg)
