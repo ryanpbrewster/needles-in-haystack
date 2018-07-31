@@ -33,10 +33,16 @@ pub mod test {
     }
 
     pub fn smoke<H: Haystack>() {
-        assert_contains::<H>("asdf", "as");
-        assert_contains::<H>("asdf", "sd");
+        assert_contains::<H>("asdf", "f");
         assert_contains::<H>("asdf", "df");
+        assert_contains::<H>("asdf", "sdf");
         assert_contains::<H>("asdf", "asdf");
+        assert_contains::<H>("asdf", "d");
+        assert_contains::<H>("asdf", "sd");
+        assert_contains::<H>("asdf", "asd");
+        assert_contains::<H>("asdf", "s");
+        assert_contains::<H>("asdf", "as");
+        assert_contains::<H>("asdf", "a");
         assert_contains::<H>("asdf", "");
 
         assert_not_contains::<H>("asdf", "pqrs");

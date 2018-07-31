@@ -6,6 +6,16 @@ impl ::Haystack for WindowHaystack {
         WindowHaystack { haystack }
     }
     fn contains(&self, needle: &[u8]) -> bool {
-        self.haystack.windows(needle.len()).any(|h| h == needle)
+        needle.is_empty() || self.haystack.windows(needle.len()).any(|h| h == needle)
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn smoke() {
+        ::test::smoke::<WindowHaystack>();
     }
 }
